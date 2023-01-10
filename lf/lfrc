@@ -1,0 +1,29 @@
+set hidden false 
+set ignorecase true
+set icons true
+set relativenumber true
+set promptfmt "\033[31;1m[%w] \033[33;1m──── ─ \033[37;1m"
+
+set previewer ~/.config/lf/preview
+set preview true
+set cleaner ~/.config/lf/cleaner
+set ratios 1:2:3
+
+map DD delete
+map p paste
+map x cut
+map y copy
+map <enter> open
+map R reload
+
+map H cd ~
+map C cd ~/.config
+
+cmd open ${{
+  test -L $f && f=$(readlink -f $f)
+  case $(file --mime-type $f -b) in
+    text/*) nvim $fx;;
+    image/*) gimp $fx;;
+    *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
+  esac
+}}
