@@ -1,0 +1,125 @@
+configuration {
+  show-icons: true;
+  kb-row-up: "Up,Alt+k";
+  kb-row-down: "Down,Alt+j";
+}
+
+* {
+  font: "Hack Nerd Font 12";
+  background: #000000;
+  background-alt: #3d3a3b;
+  foreground: #bbbbbb;
+  selected: #55776e;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  transparency: "real";
+  location: west;
+  width: 20%;
+  height: 98%;
+  y-offset: 15;
+  border-color: @background;
+  background-color: @background;
+}
+
+inputbar {
+  padding: 15px;
+  background-color: transparent;
+  text-color: @foreground;
+  orientation: horizontal;
+  children: [ "textbox-prompt-colon", "entry" ];
+}
+textbox-prompt-colon {
+  expand: false;
+  str: "";
+  padding: 15px 20;
+  border-radius: 0px;
+  background-color: @background-alt;
+  text-color: inherit;
+}
+entry {
+  expand: true;
+  padding: 15px 21px;
+  border-radius: 0px;
+  background-color: @background-alt;
+  text-color: inherit;
+  cursor: text;
+  placeholder: "Search";
+  placeholder-color: inherit;
+}
+
+mainbox {
+  enabled: true;
+  spacing: 0px;
+  background-color: transparent;
+  orientation: vertical;
+  children: [ "inputbar", "listbox" ];
+}
+listbox {
+  background-color: transparent;
+  orientation: vertical;
+  children: [ "message", "listview" ];
+}
+listview {
+  columns: 1;
+  cycle: false;
+  dynamic: true;
+  scrollbar: false;
+  layout: vertical;
+  background-color: @background;
+  border-color: @background;
+}
+
+element {
+  orientation: horizontal;
+  padding: 1.5% 1% 1.5% 1%;
+  margin: 5px 15px 5px 15px;
+  border-radius: 0px;
+  background-color: inherit;
+}
+element-text {
+  expand: true;
+  vertical-align: 0.5;
+  margin: 0% 0.5% 0% 0.5%;
+  text-color: @foreground;
+  background-color: inherit;
+}
+element-icon {
+  background-color: inherit;
+  text-color: inherit;
+  size: 40;
+}
+element normal.normal {
+  background-color: inherit;
+  text-color: inherit;
+}
+element selected.normal {
+  background-color: @selected;
+  text-color: @foreground;
+}
+element alternate.normal {
+  background-color: inherit;
+  text-color: @foreground;
+}
+
+message {
+  background-color: transparent;
+}
+textbox {
+  padding: 12px;
+  border-radius: 0px;
+  background-color: @background-alt;
+  text-color: @foreground;
+  vertical-align: 0.5;
+  horizontal-align: 0.0;
+}
+error-message {
+  padding: 12px;
+  border-radius: 0px;
+  background-color: @background;
+  text-color: @foreground;
+}
