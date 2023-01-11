@@ -16,6 +16,20 @@ Install nvim plugins by entering nvim and doing:
 ```
 Restart nvim
 
+### Change wifi interface
+```bash
+nmcli device
+```
+Check the one with 'STATE' connected
+```bash
+nvim ~/.config/awesome/rc.lua
+```
+Use search command in nvim
+```Neovim
+/wifiiw
+```
+Press Enter and change "wlo1" to "your_connected_device"
+
 ## Preview 
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/full_desktop.gif?raw=true)
 
