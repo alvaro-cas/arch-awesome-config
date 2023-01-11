@@ -1,5 +1,7 @@
-This script assumes you have the following applications installed in your arch/or similar:
+This script assumes you have an Arch installation finished and installed software / or similar:
 `lightdm`, `lightdm-gtk-greeter`, `awesome`, `xorg-server`, `base-devel`, `yay`
+
+If you need a fast guide, refer to my [Medium post](https://medium.com/@alvaro-cas/arch-linux-and-my-customization-37b15c716c7?source=friends_link&sk=b2845dfc411ae398761f8e2ed5cee2b2).
 
 ## Installation
 ```bash
