@@ -18,6 +18,11 @@ then
   sudo cp -r ./kitty/ ./lf/ ./neofetch/ ./nvim/ ./picom/ ./rofi/ ./awesome/ ~/.config/
   sudo cp ./.bashrc ~/
   sudo cp ./lf/bin/* /usr/bin
+
+  # Change ownership
+  chown -R $USER: ~/.config/awesome ~/.config/kitty ~/.config/lf ~/.config/neofetch ~/.config/nvim ~/.config/picom ~/.config/rofi
+
+  echo "Done :)"
 else
   echo "Come back later! :)"
 fi
