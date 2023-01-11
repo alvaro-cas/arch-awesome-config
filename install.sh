@@ -13,6 +13,9 @@ then
   # Install yay applications
   yay --noconfirm -S onlyoffice-bin lf picom-jonaburg-git spacefm nvm spotify
 
+  # Install node
+  nvm install node
+
   # Copy configuration to ~/.config folder
   sudo cp ./TTF/* /usr/share/fonts
   sudo cp -r ./kitty/ ./lf/ ./neofetch/ ./nvim/ ./picom/ ./rofi/ ./awesome/ ~/.config/
