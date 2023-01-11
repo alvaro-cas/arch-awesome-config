@@ -8,9 +8,19 @@ cd ./arch-awesome-config
 chmod u+x ./install.sh
 ./install.sh
 ```
+Change ownership
+```bash
+chown -R $USER: ~/.config/awesome ~/.config/kitty ~/.config/lf ~/.config/neofetch ~/.config/nvim ~/.config/picom ~/.config/rofi
+```
 
+### Nvim Installation
+Install nvim plugins by entering nvim and doing:
+```bash
+:PlugInstall
+```
+Restart nvim
 
-# Preview 
+## Preview 
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/full_desktop.gif?raw=true)
 
 ## The Bar
