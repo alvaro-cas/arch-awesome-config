@@ -11,32 +11,32 @@ chmod u+x ./install.sh
 
 
 # Preview 
-![[full_desktop.gif]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/full_desktop.gif?raw=true)
 
 ## The Bar
-![[bar_left.png]]
-![[bar_right.png]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/bar_left.png?raw=true)
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/bar_right.png?raw=true)
 
 ## System Tray
-![[tray.png]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/tray.png?raw=true)
 
 ## Terminal
-![[bashrc.png]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/bashrc.png?raw=true)
 
 ## Neofetch
-![[neofetch.png]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/neofetch.png?raw=true)
 
 ## Picom
-![[picom.gif]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/picom.gif?raw=true)
 
 ## Nvim and LF
-![[full_desktop_lf.png]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/full_desktop_lf.png?raw=true)
 
 ## Rofi and Wallpaper
-![[rofi.png]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/rofi.png?raw=true)
 
 ## Basic Hotkeys
-![[commands.png]]
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/commands.png?raw=true)
 
 ## Do you find this useful?
 
