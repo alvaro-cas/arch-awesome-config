@@ -20,7 +20,9 @@ then
   sudo cp ./lf/bin/* /usr/bin
 
   # Change ownership
-  chown -R $USER: ~/.config/awesome ~/.config/kitty ~/.config/lf ~/.config/neofetch ~/.config/nvim ~/.config/picom ~/.config/rofi
+  chown -R $USER: ~/.config/awesome ~/.config/kitty ~/.config/lf ~/.config/neofetch ~/.config/nvim ~/.config/picom ~/.config/rofi /usr/bin/lfub
+
+  chmod u+x /usr/bin/lfub
 
   echo "Done :)"
 else
