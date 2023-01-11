@@ -49,8 +49,3 @@ Hey, thank you for your support!
 ## MIT LICENSE
 Review the [LICENSE](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/LICENSE)
 
-***
-
-#### [Link to Github](https://github.com/alvaro-cas/arch-awesome-config)
-
-***
