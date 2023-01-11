@@ -8,10 +8,6 @@ cd ./arch-awesome-config
 chmod u+x ./install.sh
 ./install.sh
 ```
-Change ownership
-```bash
-chown -R $USER: ~/.config/awesome ~/.config/kitty ~/.config/lf ~/.config/neofetch ~/.config/nvim ~/.config/picom ~/.config/rofi
-```
 
 ### Nvim Installation
 Install nvim plugins by entering nvim and doing:
@@ -57,5 +53,5 @@ Hey, thank you for your support!
 ***
 
 ## MIT LICENSE
-Review the [LICENSE](https://github.com/alvaro-cas/kindle-csv-converter-obsidian/blob/main/LICENSE)
+Review the [LICENSE](https://github.com/alvaro-cas/arch-awesome-config/blob/main/LICENSE)
 
