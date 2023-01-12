@@ -169,6 +169,10 @@ awful.screen.connect_for_each_screen(function(s)
     volume = wibox.widget.textbox()
     vicious.register(volume, vicious.widgets.volume, "  $1% ", 0.1, "Master")
 
+    --Create a battery widget
+    battery = wibox.widget.textbox()
+    vicious.register(battery, vicious.widgets.bat, "  $2% $3 ", 10, "BAT0")
+
     -- Create the wibox
     s.mywibox = awful.wibar({ 
         position = "top",
@@ -263,9 +267,21 @@ awful.screen.connect_for_each_screen(function(s)
             {
               dividerL,
               bg = beautiful.bg_normal,
-              fg = beautiful.wb_bg_1,
+              fg = beautiful.wb_bg_0,
               widget = wibox.container.background
             },
+            -- {
+              -- battery,
+              -- bg = beautiful.wb_bg_0,
+              -- fg = beautiful.wb_fg_0,
+              -- widget = wibox.container.background
+            -- },
+            -- {
+              -- dividerL,
+              -- bg = beautiful.wb_bg_0,
+              -- fg = beautiful.wb_bg_1,
+              -- widget = wibox.container.background
+            -- },
             {
               cpu,
               bg = beautiful.wb_bg_1,
