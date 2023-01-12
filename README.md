@@ -32,6 +32,17 @@ Use search command in nvim
 ```
 Press Enter and change "wlo1" to "your_connected_device"
 
+### Add battery widget
+Check your power supply
+```bash
+ls /sys/class/power_supply/
+```
+
+```bash
+nvim ~/.config/awesome/rc.lua
+```
+Uncomment lines 273 to 284 and change "BAT0" to desired power supply
+
 ## Preview 
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/full_desktop.gif?raw=true)
 
