@@ -14,6 +14,7 @@ then
   yay --noconfirm -S onlyoffice-bin lf picom-jonaburg-git spacefm nvm spotify
 
   # Install node
+  source /usr/share/nvm/init-nvm.sh
   nvm install node
 
   # Copy configuration to ~/.config folder
