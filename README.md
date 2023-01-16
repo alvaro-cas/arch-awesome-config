@@ -1,49 +1,28 @@
-This script assumes you have an Arch installation finished and installed software / or similar:
-`lightdm`, `lightdm-gtk-greeter`, `awesome`, `xorg-server`, `base-devel`, `yay`
-
-If you need a fast guide, refer to my [Medium post](https://medium.com/@alvaro-cas/arch-linux-and-my-customization-37b15c716c7?source=friends_link&sk=b2845dfc411ae398761f8e2ed5cee2b2).
+## Medium guide
+If you need a how-to guide, refer to my [Medium post](https://medium.com/@alvaro-cas/arch-linux-and-my-customization-37b15c716c7?source=friends_link&sk=b2845dfc411ae398761f8e2ed5cee2b2).
 
 ## Installation
+Create a usb [bootable arch](https://wiki.archlinux.org/title/USB_flash_installation_medium) and boot.
+
+```bash
+sudo pacman -Sy
+sudo pacman -S git
+git clone https://github.com/alvaro-cas/arch-awesome-config
+cd ./arch-awesome-config
+chmod u+x ./arch_install.sh
+./arch_install.sh
+```
+Once instalaltion done, system will reboot.
+
+## Installation after reboot
 ```bash
 git clone https://github.com/alvaro-cas/arch-awesome-config
 cd ./arch-awesome-config
-chmod u+x ./install.sh
-./install.sh
+chmod u+x ./configure_system.sh
+./configure_system.sh.sh
 ```
 
-### Nvim Installation
-Install nvim plugins by entering nvim and doing:
-```bash
-:PlugInstall
-```
-Restart nvim
-
-### Change wifi interface
-```bash
-nmcli device
-```
-Check the one with 'STATE' connected
-```bash
-nvim ~/.config/awesome/rc.lua
-```
-Use search command in nvim
-```Neovim
-/wifiiw
-```
-Press Enter and change "wlo1" to "your_connected_device"
-
-### Add battery widget
-Check your power supply
-```bash
-ls /sys/class/power_supply/
-```
-
-```bash
-nvim ~/.config/awesome/rc.lua
-```
-Uncomment lines 273 to 284 and change "BAT0" to desired power supply
-
-## Preview 
+# Preview 
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/full_desktop.gif?raw=true)
 
 ## The Bar
