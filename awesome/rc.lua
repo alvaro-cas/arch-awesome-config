@@ -270,18 +270,18 @@ awful.screen.connect_for_each_screen(function(s)
               fg = beautiful.wb_bg_0,
               widget = wibox.container.background
             },
-            -- {
-              -- battery,
-              -- bg = beautiful.wb_bg_0,
-              -- fg = beautiful.wb_fg_0,
-              -- widget = wibox.container.background
-            -- },
-            -- {
-              -- dividerL,
-              -- bg = beautiful.wb_bg_0,
-              -- fg = beautiful.wb_bg_1,
-              -- widget = wibox.container.background
-            -- },
+            {
+              battery,
+              bg = beautiful.wb_bg_0,
+              fg = beautiful.wb_fg_0,
+              widget = wibox.container.background
+            },
+            {
+              dividerL,
+              bg = beautiful.wb_bg_0,
+              fg = beautiful.wb_bg_1,
+              widget = wibox.container.background
+            },
             {
               cpu,
               bg = beautiful.wb_bg_1,
