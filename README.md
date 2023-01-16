@@ -1,12 +1,11 @@
 ## Medium guide
 If you need a how-to guide, refer to my [Medium post](https://medium.com/@alvaro-cas/arch-linux-and-my-customization-37b15c716c7?source=friends_link&sk=b2845dfc411ae398761f8e2ed5cee2b2).
 
-## Installation
+## Install configured Arch
 Create a usb [bootable arch](https://wiki.archlinux.org/title/USB_flash_installation_medium) and boot.
 
 ```bash
-sudo pacman -Sy
-sudo pacman -S git
+pacman -Sy git
 git clone https://github.com/alvaro-cas/arch-awesome-config
 cd ./arch-awesome-config
 chmod u+x ./arch_install.sh
@@ -14,7 +13,7 @@ chmod u+x ./arch_install.sh
 ```
 Once instalaltion done, system will reboot.
 
-## Installation after reboot
+## Install software and customization
 ```bash
 git clone https://github.com/alvaro-cas/arch-awesome-config
 cd ./arch-awesome-config
