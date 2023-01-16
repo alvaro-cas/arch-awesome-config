@@ -21,6 +21,7 @@ cd ./arch-awesome-config
 chmod u+x ./configure_system.sh
 ./configure_system.sh.sh
 ```
+Once configuration done, system will reboot again.
 
 # Preview 
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/full_desktop.gif?raw=true)
