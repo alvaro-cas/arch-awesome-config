@@ -48,13 +48,13 @@ then
     nmcli device
     echo -ne "\n${BLUE}Name of wifi interface: ${NOCOLOR}"
     read interface
-    sed -i 's/wlo1/${interface}/g' ~/.config/awesome/rc.lua
+    sed -i "s/wlo1/$interface/g" ~/.config/awesome/rc.lua
 
     echo -e "${GREEN}### Power Supply ###\n${NOCOLOR}"
     ls /sys/class/power_supply
     echo -ne "\n${BLUE}Name of battery: ${NOCOLOR}"
     read battery
-    sed -i 's/BAT0/${battery}/g' ~/.config/awesome/rc.lua
+    sed -i "s/BAT0/$battery/g" ~/.config/awesome/rc.lua
 
     reboot
 
