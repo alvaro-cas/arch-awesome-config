@@ -20,7 +20,7 @@ then
     cd ../ && sudo rm -r yay
 
     # Install pacman applications
-    sudo pacman -S --noconfirm neofetch pulseaudio-alsa alsa-utils playerctl zip unzip signal-desktop kitty firefox rofi xclip firefox-developer-edition nemo veracrypt keepassxc ueberzug graphicsmagick ghostscript obsidian ntfs-3g maim peek gifski zbar iw noto-fonts-emoji noto-fonts-cjk rofi-emoji xdotool emacs neovim vicious
+    sudo pacman -S --noconfirm neofetch pulseaudio-alsa alsa-utils playerctl zip unzip signal-desktop kitty firefox rofi xclip firefox-developer-edition nemo veracrypt keepassxc ueberzug graphicsmagick ghostscript obsidian ntfs-3g maim peek gifski zbar iw noto-fonts-emoji noto-fonts-cjk rofi-emoji xdotool emacs neovim vicious poppler
 
     # Install yay applications
     yay -S --noconfirm onlyoffice-bin lf picom-jonaburg-git spacefm nvm spotify
