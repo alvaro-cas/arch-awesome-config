@@ -14,17 +14,17 @@ PS1='\[\033[0;36m\][\w] \[\033[0;36m\]──── ─ \[\033[0;37m\]'
 export PATH=$PATH:/home/ryse/.spicetify
 
 # Pacman colorscript
-blue='\033[0;36m'
+red='\033[0;31m'
 grey='\033[0;34m'
 white='\033[0;37m'
 
 echo -e "
- $blue  ▄██████▄    $blue  ▄██████▄    $blue  ▄██████▄
- $blue▄$white█▀█$blue██$white█▀█$blue██▄  $blue▄█$white███$blue██$white███$blue█▄  $blue▄█$white███$blue██$white███$blue█▄
- $blue█$white▄▄█$blue██$white▄▄█$blue███  $blue██$white█ █$blue██$white█ █$blue██  $blue██$white█ █$blue██$white█ █$blue██
- $blue████████████  $blue████████████  $blue████████████
- $blue██▀██▀▀██▀██  $blue██▀██▀▀██▀██  $blue██▀██▀▀██▀██
- $blue▀   ▀  ▀   ▀  $blue▀   ▀  ▀   ▀  $blue▀   ▀  ▀   ▀
+ $red  ▄██████▄    $red  ▄██████▄    $red  ▄██████▄
+ $red▄$white█▀█$red██$white█▀█$red██▄  $red▄█$white███$red██$white███$red█▄  $red▄█$white███$red██$white███$red█▄
+ $red█$white▄▄█$red██$white▄▄█$red███  $red██$white█ █$red██$white█ █$red██  $red██$white█ █$red██$white█ █$red██
+ $red████████████  $red████████████  $red████████████
+ $red██▀██▀▀██▀██  $red██▀██▀▀██▀██  $red██▀██▀▀██▀██
+ $red▀   ▀  ▀   ▀  $red▀   ▀  ▀   ▀  $red▀   ▀  ▀   ▀
  "
 
 # Editor of choice
