@@ -20,7 +20,7 @@ then
     cd ../ && sudo rm -r yay
 
     # Install pacman applications
-    sudo pacman -S --noconfirm neofetch pulseaudio-alsa alsa-utils playerctl zip unzip signal-desktop kitty firefox rofi xclip firefox-developer-edition nemo veracrypt keepassxc ueberzug graphicsmagick ghostscript obsidian ntfs-3g maim peek gifski zbar iw noto-fonts-emoji noto-fonts-cjk rofi-emoji xdotool emacs neovim vicious poppler
+    sudo pacman -S --noconfirm neofetch pulseaudio-alsa alsa-utils playerctl zip unzip signal-desktop kitty firefox rofi xclip firefox-developer-edition nemo veracrypt keepassxc ueberzug graphicsmagick ghostscript obsidian ntfs-3g maim peek gifski zbar iw noto-fonts-emoji noto-fonts-cjk rofi-emoji xdotool emacs neovim vicious poppler texlive-most bluez bluez-utils pulseaudio-bluetooth
 
     # Install yay applications
     yay -S --noconfirm onlyoffice-bin lf picom-jonaburg-git spacefm nvm spotify
@@ -32,7 +32,7 @@ then
     # Copy configuration to ~/.config folder
     mkdir -p /home/${username}/.config
     sudo cp ./TTF/* /usr/share/fonts
-    sudo cp -r ./kitty/ ./lf/ ./neofetch/ ./nvim/ ./picom/ ./rofi/ ./awesome/ ~/.config/
+    sudo cp -r ./emacs ./kitty/ ./lf/ ./neofetch/ ./nvim/ ./picom/ ./rofi/ ./awesome/ ~/.config/
     sudo cp ./.bashrc ~/
     sudo cp ./lf/bin/* /usr/bin
 
