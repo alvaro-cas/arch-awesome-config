@@ -40,6 +40,7 @@ then
     sudo chown -R $USER: ~/.config/awesome ~/.config/kitty ~/.config/lf ~/.config/neofetch ~/.config/nvim ~/.config/picom ~/.config/rofi /usr/bin/lfub
 
     # Add app configuration
+    sudo chmod u+x ~/.config/awesome/autorun.sh
     sudo chmod u+x /usr/bin/lfub
     nvim +'PlugInstall --sync' +qa
 
