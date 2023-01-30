@@ -33,7 +33,7 @@ theme.notification_max_width   = 300
 theme.notification_max_height  = 50
 
 -- Wibox
-theme.wb_bg_0                  = "#55776e"
+theme.wb_bg_0                  = "#883c43"
 theme.wb_fg_0                  = "#bbbbbb"
 theme.wb_bg_1                  = "#3d3a3b"
 
@@ -52,7 +52,7 @@ theme.hotkeys_fg               = "#bbbbbb"
 theme.hotkeys_modifiers_fg     = "#bbbbbb"
 
 -- Systray
-theme.bg_systray               = "#55776e"
+theme.bg_systray               = "#883c43"
 theme.systray_icon_spacing     = 1
 
 -- Variables set for theming the menu:
