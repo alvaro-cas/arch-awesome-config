@@ -40,6 +40,7 @@ do
     end)
 end
 -- }}}
+
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "editor"
@@ -150,7 +151,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a Netowrk widget
     -- sudo pacman -S iw
     network = wibox.widget.textbox()
-    vicious.register(network, vicious.widgets.wifiiw, "  ${ssid} ", 2, "wlo1")
+    vicious.register(network, vicious.widgets.wifiiw, "  ${ssid} ", 2, "wlp9s0")
 
     -- Create a date widget
     date = wibox.widget.textbox()
@@ -528,15 +529,15 @@ awful.rules.rules = {
     { rule = { class = "KeePassXC" },
       properties = {
         screen = 1,
-        tag = "九",
-        }
-      },
+        tag = "九"
+      }
+    },
     { rule = { class = "VeraCrypt" },
       properties = {
         screen = 1,
         tag = "九"
-        }
-      },
+      }
+    },
 
 }
 -- }}}
@@ -563,4 +564,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart Apps
 awful.spawn.with_shell("~/.config/picom/picom.sh")
 awful.spawn.with_shell("setxkbmap -option caps:swapescape &")
-
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
