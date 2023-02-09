@@ -427,6 +427,8 @@ globalkeys = gears.table.join(
         if keyboard then
           awful.util.spawn_with_shell("setxkbmap us")
           keyboard = false
+          naughty.notify({ title = "Keyboard",
+                           text = "US" })
         else
           awful.util.spawn_with_shell("setxkbmap latam")
           keyboard = true
@@ -560,6 +562,26 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- Check battery status
+gears.timer {
+	timeout   = 120,
+	call_now  = true,
+	autostart = true,
+	callback  = function()
+		awful.spawn.easy_async_with_shell([[bash -c "cat /sys/class/power_supply/BAT0/capacity"]],
+		function(stdout)
+			if tonumber(stdout) <= 5 then
+        naughty.notify({ bg = "#883c43",
+                         fg = "#bbbbbb",
+                         title = "Battery",
+                         text = "Houston! Fuel is low!",
+                         timeout = 20 })
+			end
+		end
+		)
+	end
+}
 
 -- Autostart Apps
 awful.spawn.with_shell("~/.config/picom/picom.sh")
