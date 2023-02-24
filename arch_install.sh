@@ -5,7 +5,7 @@ GREEN="\033[0;32m"
 RED="\033[0;31m"
 NOCOLOR="\033[0m"
 
-echo -ne "${BLUE}Install Arch base? [y/N]: ${NOCOLOR}"
+echo -ne "${BLUE}Install Arch base system? [y/N]: ${NOCOLOR}"
 read "answer"
 if [ "$answer" == "Y" -o "$answer" == "y" ]
 then
