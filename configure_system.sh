@@ -29,6 +29,13 @@ then
     source /usr/share/nvm/init-nvm.sh
     nvm install node
 
+    # Install skey
+    sudo pacman -S --noconfirm android-tools
+    git clone https://github.com/alvaro-cas/skey
+    cd ./skey
+    chmod u+x ./install.sh
+    ./install.sh
+
     # Copy configuration to ~/.config folder
     mkdir -p /home/${username}/.config
     sudo cp ./TTF/* /usr/share/fonts
