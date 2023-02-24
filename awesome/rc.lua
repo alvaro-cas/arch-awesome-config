@@ -151,7 +151,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a Netowrk widget
     -- sudo pacman -S iw
     network = wibox.widget.textbox()
-    vicious.register(network, vicious.widgets.wifiiw, "  ${ssid} ", 2, "wlp9s0")
+    vicious.register(network, vicious.widgets.wifiiw, "  ${ssid} ", 2, "wlo1")
 
     -- Create a date widget
     date = wibox.widget.textbox()
@@ -264,20 +264,21 @@ awful.screen.connect_for_each_screen(function(s)
         },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            -- {
+              -- dividerL,
+              -- bg = beautiful.bg_normal,
+              -- fg = beautiful.wb_bg_0,
+              -- widget = wibox.container.background
+            -- },
+            -- {
+              -- battery,
+              -- bg = beautiful.wb_bg_0,
+              -- fg = beautiful.wb_fg_0,
+              -- widget = wibox.container.background
+            -- },
             {
               dividerL,
-              bg = beautiful.bg_normal,
-              fg = beautiful.wb_bg_0,
-              widget = wibox.container.background
-            },
-            {
-              battery,
-              bg = beautiful.wb_bg_0,
-              fg = beautiful.wb_fg_0,
-              widget = wibox.container.background
-            },
-            {
-              dividerL,
+              -- bg = beautiful.bg_normal,
               bg = beautiful.wb_bg_0,
               fg = beautiful.wb_bg_1,
               widget = wibox.container.background
