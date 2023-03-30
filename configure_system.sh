@@ -42,13 +42,15 @@ then
     sudo cp -r ./emacs ./kitty/ ./lf/ ./neofetch/ ./nvim/ ./picom/ ./rofi/ ./awesome/ ~/.config/
     sudo cp ./.bashrc ~/
     sudo cp ./lf/bin/* /usr/bin
+    sudo cp -r ./global_clock/ /opt/
 
     # Change ownership
-    sudo chown -R $USER: ~/.config/awesome ~/.config/kitty ~/.config/lf ~/.config/neofetch ~/.config/nvim ~/.config/picom ~/.config/rofi /usr/bin/lfub
+    sudo chown -R $USER: ~/.config/awesome ~/.config/kitty ~/.config/lf ~/.config/neofetch ~/.config/nvim ~/.config/picom ~/.config/rofi /usr/bin/lfub /opt/global_clock/clock.sh
 
     # Add app configuration
     sudo chmod u+x ~/.config/awesome/autorun.sh
     sudo chmod u+x /usr/bin/lfub
+    sudo chmod u+x /opt/global_clock/clock.sh
     nvim +'PlugInstall --sync' +qa
 
     # Change wifi and battery
