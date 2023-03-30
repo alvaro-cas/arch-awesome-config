@@ -35,3 +35,8 @@ source /usr/share/nvm/init-nvm.sh
 
 export PATH="$HOME/.local/bin:$PATH"
 alias lf=lfub
+alias skey=/opt/skey/skey.sh
+alias clock="watch -n 1 '/opt/global_clock/clock.sh'"
+
+export PATH="/home/ryse/anaconda3/bin:$PATH"
+
