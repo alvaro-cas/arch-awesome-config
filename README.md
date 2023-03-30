@@ -47,6 +47,9 @@ Once configuration done, system will reboot again.
 ## Rofi and Wallpaper
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/rofi.png?raw=true)
 
+## Stock Exchange Clock
+![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/stock.png?raw=true)
+
 ## Basic Hotkeys
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/commands.png?raw=true)
 
