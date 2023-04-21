@@ -21,7 +21,7 @@ set foldlevel=2
 " Plugin config
 call plug#begin('~/.config/nvim/plugins')
 Plug 'romgrk/barbar.nvim'
-Plug 'mcchrish/zenbones.nvim'
+Plug 'rebelot/kanagawa.nvim'
 Plug 'rktjmp/lush.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
@@ -36,8 +36,7 @@ Plug 'brenoprata10/nvim-highlight-colors'
 call plug#end()
 
 " Color scheme config
-set background=dark
-colorscheme zenbones
+colorscheme kanagawa
 
 " Shortcuts
 noremap k gk
@@ -58,6 +57,9 @@ nnoremap <silent> <C-0> <Cmd>BufferLast<CR>
 nnoremap <silent> <C-c> <Cmd>BufferClose<CR>
 nnoremap <silent> <C-s> <Cmd>:w<CR>:SSave! current<CR>
 lua << EOF
+-- Colorscheme
+require("kanagawa").load("dragon")
+
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {'python', 'javascript', 'r', 'html', 'css', 
