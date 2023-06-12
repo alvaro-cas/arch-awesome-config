@@ -65,7 +65,8 @@ Once configuration done, system will reboot again.
 
 ## Do you find this useful?
 
-<a href="https://www.buymeacoffee.com/alvaro.cas"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=alvaro.cas&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff"></a>
+<a href="https://www.buymeacoffee.com/alvaro.cas"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a book  &emoji=📓&slug=alvaro.cas&button_colour=883c43&font_colour=ffffff&font_family=Inter&outline_colour=ffffff&coffee_colour=ffffff"></a>
+
 
 Hey, thank you for your support!
 
