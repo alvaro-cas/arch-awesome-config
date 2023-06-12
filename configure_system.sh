@@ -119,7 +119,8 @@ custom() {
   sudo chmod u+x /opt/skey/skey.sh
 
   # Install gloabl clock
-  sudo cp -r ./global_clock/ /opt/
+  sudo mkdir /opt/global_clock
+  sudo cp ./global_clock/clock.sh /opt/global_clock
   sudo chown -R $USER: /opt/global_clock/clock.sh
   sudo chmod u+x /opt/global_clock/clock.sh
 }
