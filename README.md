@@ -11,7 +11,7 @@ cd ./arch-awesome-config
 chmod u+x ./arch_install.sh
 ./arch_install.sh
 ```
-Once instalaltion done, reboot the system.
+Once configuration done, system will reboot.
 
 ## Install software and customization
 ```bash
@@ -23,7 +23,7 @@ chmod u+x ./configure_system.sh
 # For help
 ./configure_system.sh
 ```
-Once configuration done, system will reboot again.
+Once instalaltion done, reboot the system.
 
 ## Custom scripts
 - [Skey](https://github.com/alvaro-cas/arch-awesome-config/tree/main/skey)
@@ -56,9 +56,6 @@ Once configuration done, system will reboot again.
 
 ## Rofi and Wallpaper
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/rofi.png?raw=true)
-
-## Stock Exchange Clock
-![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/stock.png?raw=true)
 
 ## Basic Hotkeys
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/commands.png?raw=true)
