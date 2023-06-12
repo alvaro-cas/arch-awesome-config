@@ -34,7 +34,7 @@ then
     read DISK
     TARGET_DISK="/dev/${DISK}"
     sudo umount ${TARGET_DISK}?* &> /dev/null
-    dd if=/dev/zero of=${TARGET_DISK} bs=4M status=progress
+    dd if=/dev/zero of=${TARGET_DISK} bs=32M status=progress
 
     # Start partition
     sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${TARGET_DISK}
