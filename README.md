@@ -11,16 +11,26 @@ cd ./arch-awesome-config
 chmod u+x ./arch_install.sh
 ./arch_install.sh
 ```
-Once instalaltion done, system will reboot.
+Once instalaltion done, reboot the system.
 
 ## Install software and customization
 ```bash
 git clone https://github.com/alvaro-cas/arch-awesome-config
 cd ./arch-awesome-config
 chmod u+x ./configure_system.sh
-./configure_system.sh.sh
+./configure_system.sh -a # To install all
+
+# For help
+./configure_system.sh
 ```
 Once configuration done, system will reboot again.
+
+## Custom scripts
+- [Skey](https://github.com/alvaro-cas/arch-awesome-config/tree/main/skey)
+
+- [Global Clock](https://github.com/alvaro-cas/arch-awesome-config/tree/main/global_clock)
+
+***
 
 # Preview 
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/full_desktop.gif?raw=true)
