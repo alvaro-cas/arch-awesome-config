@@ -17,7 +17,7 @@ check_error() {
 
 echo -ne "${BLUE}Install Arch base system? [y/N]: ${NOCOLOR}"
 read "ANSWER"
-if [[ "${ANSWER}" = "Y" -o "${ANSWER}" = "y" ]]
+if [ "${ANSWER}" = "Y" -o "${ANSWER}" = "y" ]
 then
 
     # Set time and date
@@ -34,7 +34,7 @@ then
     read DISK
     TARGET_DISK="/dev/${DISK}"
     sudo umount ${TARGET_DISK}?* &> /dev/null
-    check_error 'Unmount disk'
+    dd if=/dev/zero of=${TARGET_DISK} bs=4M status=progress
 
     # Start partition
     sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${TARGET_DISK}
@@ -55,17 +55,15 @@ then
   1 # Partition number one
   1 # Type Efi
   w # write changes
-EOF &> /dev/null
-    check_error 'Partition'
+EOF
 
-    TARGET_DISK_ONE=$(lsblk | grep nvme | awk '{print $1}' | tail -3 | cut -c 5- | head -1)
-    TARGET_DISK_TWO=$(lsblk | grep ${DISK} | awk '{print $1}' | tail -3 | cut -c 5- | tail -2 | head -1)
-    TARGET_DISK_THREE=$(lsblk | grep ${DISK} | awk '{print $1}' | tail -3 | cut -c 5- | tail -1)
+    TARGET_DISK_ONE="/dev/$(lsblk | grep ${DISK} | awk '{print $1}' | tail -3 | cut -c 7- | head -1)"
+    TARGET_DISK_TWO="/dev/$(lsblk | grep ${DISK} | awk '{print $1}' | tail -3 | cut -c 7- | tail -2 | head -1)"
+    TARGET_DISK_THREE="/dev/$(lsblk | grep ${DISK} | awk '{print $1}' | tail -3 | cut -c 7- | tail -1)"
 
     # Encrypt and open
     echo -e "\n\n${GREEN}===> Encrypting disks <===${NOCOLOR}"
-    cryptsetup luksFormat -v -s 512 -h sha512 ${TARGET_DISK_THREE} &> /dev/null
-    check_error 'LuksFormat'
+    cryptsetup luksFormat -v -s 512 -h sha512 ${TARGET_DISK_THREE}
     cryptsetup open ${TARGET_DISK_THREE} luks_root
 
     mkfs.vfat -n "EFI" ${TARGET_DISK_ONE} &> /dev/null
@@ -83,15 +81,15 @@ EOF &> /dev/null
     mount ${TARGET_DISK_ONE} /mnt/boot/efi
 
     cd /mnt
-    dd if=/dev/zero of=swap bs=1M count=1024
+    dd if=/dev/zero of=swap bs=1M count=1024 &> /dev/null
+    check_error 'Swap'
     chmod go-r swap
     mkswap swap
     swapon swap
 
     echo -e "\n\n${GREEN}===> Base system <===${NOCOLOR}"
     pacman -Sy
-    pacstrap /mnt base linux linux-firmware networkmanager grub efibootmgr dosfstools os-prober mtools base-devel sudo git &> /dev/null
-    check_error 'Base install'
+    pacstrap /mnt base linux linux-firmware networkmanager grub efibootmgr dosfstools os-prober mtools base-devel sudo git
 
     # Generate disk table
     genfstab -U /mnt >> /mnt/etc/fstab
