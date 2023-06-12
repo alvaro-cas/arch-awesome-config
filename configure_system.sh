@@ -1,5 +1,6 @@
 #!/bin/bash
 # Set color for input and color for output
+BLUE="\033[0;36m"
 GREEN="\033[0;32m"
 RED="\033[0;31m"
 NOCOLOR="\033[0m"
@@ -7,16 +8,16 @@ NOCOLOR="\033[0m"
 usage() {
   echo "Usage: ${0} [-a] [-bcdpqsw]" 1>&2
   echo
-  echo 'By default this script will install yay, git, zip, file helpers, node, bluetooth, and audio'
+  echo 'By default this script will install yay, git'
   echo
   echo '  -a  Install all included. Use this option alone.'
-  echo '  -b  Install browsers with custom profiles. Firefox, Firefox Developer, Brave'
+  echo '  -b  Install browsers with custom profiles. Run after reboot. Firefox, Firefox Developer, Brave'
   echo '  -c  Install custom global stock exchange clock and skey utility.'
   echo '  -d  Enable dark mode.'
   echo '  -p  Install productivity tools. Obsidian, onlyoffice, gimp, emacs, signal, audacity'
   echo '  -q  Install virual machine qemu.'
   echo '  -s  Install security tools. Wireshark, openssl, nmap, ufw'
-  echo '  -w  Install window manager and desktop configuration. Awesome, lightdm, Xorg, rofi, kitty, lf, neofetch, picom, nvim'
+  echo '  -w  Install window manager and desktop configuration. Awesome, lightdm, Xorg, rofi, kitty, lf, neofetch, picom, nvim, audio, bluetooth, node'
   echo
   exit 1
 }
@@ -38,47 +39,21 @@ default() {
   mkdir -p /home/${USER}/Downloads
 
   # Install basic
-  sudo pacman -S --noconfirm git zip unzip graphicsmagick \
-    ghostscript poppler &> /dev/null
-
-  check_error 'Default apps'
+  sudo pacman -S --noconfirm git zip unzip
 
   # Install yay
   git clone https://aur.archlinux.org/yay.git &> /dev/null
-  cd yay && makepkg -si --noconfirm &> /dev/null
+  cd yay && makepkg -si --noconfirm
   check_error 'Yay'
   cd ../ && sudo rm -r yay
-
-  # Install node
-  yay -S --noconfirm nvm &> /dev/null
-  source /usr/share/nvm/init-nvm.sh &> /dev/null
-  check_error 'Nvm'
-  nvm install node &> /dev/null
-  check_error 'Node'
-
-  # Install files helpers
-  sudo pacman -S --noconfirm nemo ntfs-3g &> /dev/null
-  check_error 'File helpers'
-  yay -S --noconfirm spacefm &> /dev/null
-  check_error 'SpaceFM'
-
-  # Install audio
-  sudo pacman -S --noconfirm pulseaudio-alsa alsa-utils \
-    playerctl pavucontrol mpv &> /dev/null
-  check_error 'Audio helpers'
-
-  # Install bluetooth
-  sudo pacman -S --noconfirm bluez bluez-utils \
-    pulseaudio-bluetooth &> /dev/null
-  check_error 'Bluetooth helpers'
 }
 
 browsers() {
-  sudo pacman -S --noconfirm firefox firefox-developer-edition &> /dev/null
+  sudo pacman -S --noconfirm firefox firefox-developer-edition
   check_error 'Firefox'
-  yay -S --noconfirm brave-bin &> /dev/null
+  yay -S --noconfirm brave-bin
   check_error 'Brave'
-  sudo sed -i 's/Exec=brave %U/Exec=brave %U -incognito/' brave-browser.desktop
+  sudo sed -i 's/Exec=brave %U/Exec=brave %U -incognito/' /usr/share/applications/brave-browser.desktop
 
   # Create firefox profiles
   firefox &> /dev/null &
@@ -111,7 +86,7 @@ browsers() {
 
 custom() {
   # Install skey
-  sudo pacman -S --noconfirm android-tools &> /dev/null
+  sudo pacman -S --noconfirm android-tools
   check_error 'Android tools'
   sudo mkdir /opt/skey
   sudo cp ./skey/skey.sh /opt/skey
@@ -127,13 +102,14 @@ custom() {
 
 dark_mode() {
   # Set dark mode
+  mkdir -p ~/.config/gtk-3.0
   echo -e '[Settings]\ngtk-application-prefer-dark-theme=1' >> ~/.config/gtk-3.0/settings.ini
   check_error 'Dark mode'
 }
 
 productivity() {
   sudo pacman -S --noconfirm obsidian gimp texlive-core emacs \
-    signal-desktop audacity &> /dev/null
+    signal-desktop audacity
   check_error 'Productivity tools'
   yay -S --noconfirm onlyoffice-bin
   check_error 'Only office'
@@ -144,14 +120,14 @@ productivity() {
 
 virtual_machine() {
   sudo pacman -S --noconfirm qemu virt-manager dnsmasq vde2 \
-    ovmf &> /dev/null
+    ovmf
   check_error 'Qemu'
   sudo systemctl enable libvirtd
   sudo usermod -G libvirt -a $USER
 }
 
 security() {
-  sudo pacman -S --noconfirm openssl nmap wireshark-qt ufw &> /dev/null
+  sudo pacman -S --noconfirm openssl nmap wireshark-qt ufw
   check_error 'Security tools'
 }
 
@@ -161,7 +137,7 @@ window_manager() {
     awesome xorg-server neofetch kitty rofi ueberzug \
     vicious man veracrypt keepassxc neovim vim xclip \
     maim peek gifski noto-fonts-emoji noto-fonts-cjk \
-    rofi-emoji zbar &> /dev/null
+    rofi-emoji zbar graphicsmagick ghostscript poppler
   check_error 'Window manager'
 
   yay -S --noconfirm lf picom-jonaburg-git
@@ -187,6 +163,29 @@ window_manager() {
   # Automatically install plugins
   nvim +'PlugInstall --sync' +qa
   check_error 'Nvim plugins'
+
+  # Install node
+  yay -S --noconfirm nvm &> /dev/null
+  source /usr/share/nvm/init-nvm.sh &> /dev/null
+  check_error 'Nvm'
+  nvm install node &> /dev/null
+  check_error 'Node'
+
+  # Install files helpers
+  sudo pacman -S --noconfirm nemo ntfs-3g
+  check_error 'File helpers'
+  yay -S --noconfirm spacefm
+  check_error 'SpaceFM'
+
+  # Install audio
+  sudo pacman -S --noconfirm pulseaudio-alsa alsa-utils \
+    playerctl pavucontrol mpv
+  check_error 'Audio helpers'
+
+  # Install bluetooth
+  sudo pacman -S --noconfirm bluez bluez-utils \
+    pulseaudio-bluetooth
+  check_error 'Bluetooth helpers'
 }
 
 if [[ "${#}" -eq 0 ]]
@@ -211,33 +210,33 @@ do
       exit 0
 		;;
 		b)
-      echo '===> Configuring browsers <==='
+      echo -ne "${BLUE} ===> Configuring browsers <=== ${NOCOLOR}"
       default
-      broswers
+      browsers
 		;;
 		c)
-      echo '===> Installing custom scripts <==='
+      echo -ne "${BLUE} ===> Installing custom scripts <=== ${NOCOLOR}"
       custom
 		;;
 		d)
-      echo '===> Configuring dark-mode <==='
+      echo -ne "${BLUE} ===> Configuring dark-mode <=== ${NOCOLOR}"
       dark_mode
 		;;
 		p)
-      echo '===> Installing productivity tools <==='
+      echo -ne "${BLUE} ===> Installing productivity tools <=== ${NOCOLOR}"
       default
       productivity
 		;;
 		q)
-      echo '===> Installing qemu <==='
+      echo -ne "${BLUE} ===> Installing qemu <===' ${NOCOLOR}"
       virtual_machine
 		;;
 		s)
-      echo '===> Installing security tools <==='
+      echo -ne "${BLUE} ===> Installing security tools <=== ${NOCOLOR}"
       security
 		;;
 		w)
-      echo '===> Installing window manager <==='
+      echo -ne "${BLUE} ===> Installing window manager <=== ${NOCOLOR}"
       default
       window_manager
 		;;
