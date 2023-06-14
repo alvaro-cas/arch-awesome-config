@@ -198,7 +198,7 @@ while getopts abcdpqsw OPTION
 do
 	case "${OPTION}" in
 		a)
-      echo '===> Starting full configuration <==='
+      echo -ne "${BLUE} ===> Starting full configuration <=== ${NOCOLOR}"
       default
       broswers
       custom
