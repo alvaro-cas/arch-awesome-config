@@ -5,6 +5,7 @@ GREEN="\033[0;32m"
 RED="\033[0;31m"
 NOCOLOR="\033[0m"
 
+# Show usage
 usage() {
   echo "Usage: ${0} [-a] [-bcdpqsw]" 1>&2
   echo
