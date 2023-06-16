@@ -21,12 +21,9 @@ skey
 
 ***
 
-## Do you find this useful?
+## The End
+I hope you enjoy! You can *support* my work [here](https://liberapay.com/Cuatroy2/donate) (I contribute 1% of my revenue to fund carbon removal🌳) or check more content at my [GitHub](https://github.com/alvaro-cas), [YouTube (Spanish)](https://www.youtube.com/@cuatroy2) or [Medium](https://medium.com/@cuatroy2). Happy Day! 😃
 
-Support further development. Buy me a book!
-
-<a href="https://www.buymeacoffee.com/alvaro.cas"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a book  &emoji=📓&slug=alvaro.cas&button_colour=883c43&font_colour=ffffff&font_family=Inter&outline_colour=ffffff&coffee_colour=ffffff"></a>
-
-Hey, thank you for your support!
+<noscript><a href="https://liberapay.com/Cuatroy2/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 
 
