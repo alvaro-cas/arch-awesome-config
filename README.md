@@ -60,20 +60,10 @@ Once instalaltion done, reboot the system.
 ## Basic Hotkeys
 ![](https://github.com/alvaro-cas/arch-awesome-config/blob/main/assets/commands.png?raw=true)
 
-## Do you find this useful?
-
-<a href="https://www.buymeacoffee.com/alvaro.cas"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a book  &emoji=📓&slug=alvaro.cas&button_colour=883c43&font_colour=ffffff&font_family=Inter&outline_colour=ffffff&coffee_colour=ffffff"></a>
-
-
-Hey, thank you for your support!
-
-***
 
 ## MIT LICENSE
 Review the [LICENSE](https://github.com/alvaro-cas/arch-awesome-config/blob/main/LICENSE)
 
-<<<<<<< HEAD
-=======
 ***
 ## The End
 I hope you enjoy! You can *support* my work [here](https://liberapay.com/Cuatroy2/donate) (I contribute 1% of my revenue to fund carbon removal🌳) or check more content at my [Medium](https://medium.com/@cuatroy2).
@@ -82,4 +72,3 @@ I hope you enjoy! You can *support* my work [here](https://liberapay.com/Cuatroy
 
 <noscript><a href="https://liberapay.com/Cuatroy2/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 
->>>>>>> d4bf58b (Update donation)
