@@ -7,18 +7,16 @@ NOCOLOR="\033[0m"
 
 # Show usage
 usage() {
-  echo "Usage: ${0} [-a] [-bcdpqsw]" 1>&2
+  echo "Usage: ${0} [-a] [-bcdpsw]" 1>&2
   echo
-  echo 'By default this script will install yay, git'
+  echo 'By default this script will install AwesomeWM, lightdm, Xorg, rofi, kitty, lf, neofetch, picom, nvim, audio, bluetooth, node, yay, git, zip, unzip, pip'
   echo
   echo '  -a  Install all included. Use this option alone.'
   echo '  -b  Install browsers with custom profiles. Run after reboot. Firefox, Firefox Developer, Brave'
   echo '  -c  Install custom global stock exchange clock and skey utility.'
   echo '  -d  Enable dark mode.'
-  echo '  -p  Install productivity tools. Obsidian, onlyoffice, gimp, emacs, signal, audacity'
-  echo '  -q  Install virual machine qemu.'
-  echo '  -s  Install security tools. Wireshark, openssl, nmap, ufw'
-  echo '  -w  Install window manager and desktop configuration. Awesome, lightdm, Xorg, rofi, kitty, lf, neofetch, picom, nvim, audio, bluetooth, node'
+  echo '  -p  Install productivity tools. Obsidian, onlyoffice, gimp, emacs, signal, qemu, blender, wxHexEditor.'
+  echo '  -s  Install security tools. Wireshark, openssl, nmap, ufw, net-tools, yubico-authenticator-bin.'
   echo
   exit 1
 }
@@ -40,13 +38,68 @@ default() {
   mkdir -p /home/${USER}/Downloads
 
   # Install basic
-  sudo pacman -S --noconfirm git zip unzip
+  sudo pacman -S --noconfirm git zip unzip pip
 
   # Install yay
   git clone https://aur.archlinux.org/yay.git &> /dev/null
   cd yay && makepkg -si --noconfirm
   check_error 'Yay'
   cd ../ && sudo rm -r yay
+
+  # Install window manager
+  sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter \
+    awesome xorg-server neofetch kitty rofi ueberzug \
+    vicious man veracrypt keepassxc neovim vim xclip \
+    maim peek gifski noto-fonts-emoji noto-fonts-cjk \
+    rofi-emoji zbar graphicsmagick ghostscript poppler
+  check_error 'Window manager'
+
+  yay -S --noconfirm lf picom-jonaburg-git
+  check_error 'Picom and lf'
+
+  # Enable service lightdm
+  sudo systemctl enable lightdm.service
+
+  # Configure directories
+  sudo cp -r ./kitty/ ./lf/ ./neofetch/ ./picom/ ./rofi/ \
+    ./awesome/ ./nvim/ ~/.config/
+  sudo cp ./lf/bin/* /usr/bin
+  sudo cp ./.bashrc ~/
+  sudo cp ./TTF/* /usr/share/fonts
+
+  sudo chown -R $USER: ~/.config/awesome ~/.config/kitty \
+    ~/.config/lf ~/.config/neofetch ~/.config/picom \
+    ~/.config/rofi /usr/bin/lfub ~/.config/nvim
+
+  sudo chmod u+x ~/.config/awesome/autorun.sh
+  sudo chmod u+x /usr/bin/lfub
+
+  # Automatically install plugins
+  nvim +'PlugInstall --sync' +qa
+  check_error 'Nvim plugins'
+
+  # Install node
+  yay -S --noconfirm nvm &> /dev/null
+  source /usr/share/nvm/init-nvm.sh &> /dev/null
+  check_error 'Nvm'
+  nvm install node &> /dev/null
+  check_error 'Node'
+
+  # Install files helpers
+  sudo pacman -S --noconfirm nemo ntfs-3g
+  check_error 'File helpers'
+  yay -S --noconfirm spacefm
+  check_error 'SpaceFM'
+
+  # Install audio
+  sudo pacman -S --noconfirm pulseaudio-alsa alsa-utils \
+    playerctl pavucontrol mpv
+  check_error 'Audio helpers'
+
+  # Install bluetooth
+  sudo pacman -S --noconfirm bluez bluez-utils \
+    pulseaudio-bluetooth
+  check_error 'Bluetooth helpers'
 }
 
 browsers() {
@@ -109,84 +162,26 @@ dark_mode() {
 }
 
 productivity() {
-  sudo pacman -S --noconfirm obsidian gimp texlive-core emacs \
-    signal-desktop audacity
+  sudo pacman -S --noconfirm obsidian gimp texlive-core emacs signal-desktop blender
   check_error 'Productivity tools'
-  yay -S --noconfirm onlyoffice-bin
+  yay -S --noconfirm onlyoffice-bin wxhexeditor
   check_error 'Only office'
 
   # Copy emacs config
-  sudo cp -r ./emacs ~/.config/
-}
+  mkdir ~/.emacs.d/
+  sudo cp -r ./emacs/init.el ~/.emacs.d/
 
-virtual_machine() {
-  sudo pacman -S --noconfirm qemu virt-manager dnsmasq vde2 \
-    ovmf
+  # Install qemu
+  sudo pacman -S --noconfirm qemu virt-manager dnsmasq vde2 ovmf
   check_error 'Qemu'
   sudo systemctl enable libvirtd
   sudo usermod -G libvirt -a $USER
 }
 
 security() {
-  sudo pacman -S --noconfirm openssl nmap wireshark-qt ufw
+  sudo pacman -S --noconfirm openssl nmap wireshark-qt ufw net-tools
   check_error 'Security tools'
-}
-
-window_manager() {
-  # Install window manager
-  sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter \
-    awesome xorg-server neofetch kitty rofi ueberzug \
-    vicious man veracrypt keepassxc neovim vim xclip \
-    maim peek gifski noto-fonts-emoji noto-fonts-cjk \
-    rofi-emoji zbar graphicsmagick ghostscript poppler
-  check_error 'Window manager'
-
-  yay -S --noconfirm lf picom-jonaburg-git
-  check_error 'Picom and lf'
-
-  # Enable service lightdm
-  sudo systemctl enable lightdm.service
-
-  # Configure directories
-  sudo cp -r ./kitty/ ./lf/ ./neofetch/ ./picom/ ./rofi/ \
-    ./awesome/ ./nvim/ ~/.config/
-  sudo cp ./lf/bin/* /usr/bin
-  sudo cp ./.bashrc ~/
-  sudo cp ./TTF/* /usr/share/fonts
-
-  sudo chown -R $USER: ~/.config/awesome ~/.config/kitty \
-    ~/.config/lf ~/.config/neofetch ~/.config/picom \
-    ~/.config/rofi /usr/bin/lfub ~/.config/nvim
-
-  sudo chmod u+x ~/.config/awesome/autorun.sh
-  sudo chmod u+x /usr/bin/lfub
-
-  # Automatically install plugins
-  nvim +'PlugInstall --sync' +qa
-  check_error 'Nvim plugins'
-
-  # Install node
-  yay -S --noconfirm nvm &> /dev/null
-  source /usr/share/nvm/init-nvm.sh &> /dev/null
-  check_error 'Nvm'
-  nvm install node &> /dev/null
-  check_error 'Node'
-
-  # Install files helpers
-  sudo pacman -S --noconfirm nemo ntfs-3g
-  check_error 'File helpers'
-  yay -S --noconfirm spacefm
-  check_error 'SpaceFM'
-
-  # Install audio
-  sudo pacman -S --noconfirm pulseaudio-alsa alsa-utils \
-    playerctl pavucontrol mpv
-  check_error 'Audio helpers'
-
-  # Install bluetooth
-  sudo pacman -S --noconfirm bluez bluez-utils \
-    pulseaudio-bluetooth
-  check_error 'Bluetooth helpers'
+  yay -S --noconfirm yubico-authenticator-bin
 }
 
 if [[ "${#}" -eq 0 ]]
@@ -195,25 +190,38 @@ then
 fi
 
 # Read options and install
-while getopts abcdpqsw OPTION
+while getopts abcdps OPTION
 do
 	case "${OPTION}" in
 		a)
-      echo -ne "${BLUE} ===> Starting full configuration <=== ${NOCOLOR}"
-      default
-      broswers
-      custom
-      dark_mode
-      productivity
-      virtual_machine
-      security
-      window_manager
-      exit 0
+      if [[ "${@}" == "-a" ]]
+      then
+        echo -ne "${BLUE} ===> Starting full configuration <=== ${NOCOLOR}"
+        default
+        custom
+        dark_mode
+        productivity
+        virtual_machine
+        security
+        window_manager
+        exit 0
+      else
+        echo "ERROR: Option must be used alone!"
+        echo
+        usage
+      fi
 		;;
 		b)
       echo -ne "${BLUE} ===> Configuring browsers <=== ${NOCOLOR}"
-      default
-      browsers
+      echo -ne "${BLUE}Browsers need GUI, continue? [y/N]: ${NOCOLOR}"
+      read "ANSWER"
+      if [ "${ANSWER}" = "Y" -o "${ANSWER}" = "y" ]
+      then
+        default
+        browsers
+      else
+        echo "Browsers need GUI to start!"
+      fi
 		;;
 		c)
       echo -ne "${BLUE} ===> Installing custom scripts <=== ${NOCOLOR}"
@@ -228,18 +236,10 @@ do
       default
       productivity
 		;;
-		q)
-      echo -ne "${BLUE} ===> Installing qemu <===' ${NOCOLOR}"
-      virtual_machine
-		;;
 		s)
       echo -ne "${BLUE} ===> Installing security tools <=== ${NOCOLOR}"
-      security
-		;;
-		w)
-      echo -ne "${BLUE} ===> Installing window manager <=== ${NOCOLOR}"
       default
-      window_manager
+      security
 		;;
 		?)
       usage
