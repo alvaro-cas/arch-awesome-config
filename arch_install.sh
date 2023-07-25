@@ -19,7 +19,6 @@ echo -ne "${BLUE}Install Arch base system? [y/N]: ${NOCOLOR}"
 read "ANSWER"
 if [ "${ANSWER}" = "Y" -o "${ANSWER}" = "y" ]
 then
-
     # Set time and date
     timedatectl set-ntp true
 
